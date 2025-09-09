@@ -1,6 +1,36 @@
 # 測電力_網頁 (PowerTesting Web) v0.1
 
-一個專為Android設計的網頁瀏覽電力測試應用程式，可以自動模擬用戶瀏覽網頁的行為，並精確記錄電池消耗情況。
+<div align="center">
+  <img src="images/app_icon.png" alt="應用程式圖示" width="128" height="128">
+  <br>
+  <strong>一個專為Android設計的網頁瀏覽電力測試應用程式</strong>
+  <br>
+  可以自動模擬用戶瀏覽網頁的行為，並精確記錄電池消耗情況
+</div>
+
+## 📱 應用程式截圖
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="images/screenshots/settings_overview.png" alt="設定頁面總覽" width="250">
+        <br>
+        <strong>設定頁面總覽</strong>
+      </td>
+      <td align="center">
+        <img src="images/screenshots/settings_page.png" alt="網址設定頁面" width="250">
+        <br>
+        <strong>網址設定頁面</strong>
+      </td>
+      <td align="center">
+        <img src="images/screenshots/test_result.png" alt="測試結果報告" width="250">
+        <br>
+        <strong>測試結果報告</strong>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ## 📱 功能特色
 
