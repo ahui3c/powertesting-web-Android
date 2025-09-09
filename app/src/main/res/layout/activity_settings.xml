@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 功能說明 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="功能說明"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:textColor="#2196F3" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• 程式會依序循環瀏覽設定的網址\n• 滑動到頁面底部時會切換到下一個網址\n• 最後一個網址後會回到第一個網址\n• 持續循環直到測試時間結束\n• 空白網址會使用預設值\n• 測試中螢幕會保持常亮\n• 測試結束會顯示詳細結果報告"
+            android:textSize="14sp"
+            android:layout_marginBottom="24dp"
+            android:textColor="#666666"
+            android:lineSpacingExtra="4dp" />
+
+        <!-- 測試時間設定 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="測試時間設定"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:textColor="#2196F3" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="設定測試持續時間（分鐘）"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp"
+            android:textColor="#666666" />
+
+        <TextView
+            android:id="@+id/tvTestDuration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="測試時間: 30 分鐘"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"
+            android:textColor="#333333" />
+
+        <SeekBar
+            android:id="@+id/sbTestDuration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="119"
+            android:progress="29"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="範圍: 1-120 分鐘"
+            android:textSize="12sp"
+            android:layout_marginTop="-16dp"
+            android:layout_marginBottom="24dp"
+            android:textColor="#999999" />
+
+        <!-- 滑動速度設定 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="滑動速度設定"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:textColor="#2196F3" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="調整自動滑動的速度"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp"
+            android:textColor="#666666" />
+
+        <TextView
+            android:id="@+id/tvScrollSpeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="滑動速度: 3 (正常)"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"
+            android:textColor="#333333" />
+
+        <SeekBar
+            android:id="@+id/sbScrollSpeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="9"
+            android:progress="2"
+            android:layout_marginBottom="24dp" />
+
+        <!-- 網址循環設定 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="網址循環設定"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:textColor="#2196F3" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="設定5組測試網址，程式會依序循環瀏覽"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp"
+            android:textColor="#666666" />
+
+        <!-- 網址1 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="網址 1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"
+            android:textColor="#333333" />
+
+        <EditText
+            android:id="@+id/etUrl1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="例如: ahui3c.com"
+            android:inputType="textUri"
+            android:layout_marginBottom="12dp"
+            android:padding="12dp" />
+
+        <!-- 網址2 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="網址 2"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"
+            android:textColor="#333333" />
+
+        <EditText
+            android:id="@+id/etUrl2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="例如: www.pchome.com.tw"
+            android:inputType="textUri"
+            android:layout_marginBottom="12dp"
+            android:padding="12dp" />
+
+        <!-- 網址3 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="網址 3"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"
+            android:textColor="#333333" />
+
+        <EditText
+            android:id="@+id/etUrl3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="例如: m.mobile01.com"
+            android:inputType="textUri"
+            android:layout_marginBottom="12dp"
+            android:padding="12dp" />
+
+        <!-- 網址4 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="網址 4"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"
+            android:textColor="#333333" />
+
+        <EditText
+            android:id="@+id/etUrl4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="例如: lpcomment.com"
+            android:inputType="textUri"
+            android:layout_marginBottom="12dp"
+            android:padding="12dp" />
+
+        <!-- 網址5 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="網址 5"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"
+            android:textColor="#333333" />
+
+        <EditText
+            android:id="@+id/etUrl5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="例如: www.toy-people.com"
+            android:inputType="textUri"
+            android:layout_marginBottom="24dp"
+            android:padding="12dp" />
+
+        <!-- 關於程式 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="關於程式"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:textColor="#2196F3" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="程式功能：模擬瀏覽網頁測試全自動紀錄固定時間的手機耗電量"
+            android:textSize="14sp"
+            android:layout_marginBottom="12dp"
+            android:textColor="#666666"
+            android:lineSpacingExtra="2dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="作者：廖阿輝　網頁："
+                android:textSize="14sp"
+                android:textColor="#666666" />
+
+            <TextView
+                android:id="@+id/tvAuthorWebsite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="https://ahui3.com"
+                android:textSize="14sp"
+                android:textColor="#2196F3"
+                android:textStyle="bold"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground"
+                android:padding="4dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="支援120Hz高更新率顯示，提供流暢的瀏覽體驗"
+            android:textSize="12sp"
+            android:layout_marginBottom="32dp"
+            android:textColor="#999999" />
+
+        <!-- 按鈕區域 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnReset"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="重設"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#FF9800"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="儲存"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="#4CAF50"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
+

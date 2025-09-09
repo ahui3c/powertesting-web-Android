@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">測電力_網頁</string>
+    <string name="start_test">開始測試</string>
+    <string name="stop_test">停止測試</string>
+    <string name="battery_level">電量: %1$d%%</string>
+    <string name="test_time">測試時間: %1$s</string>
+    <string name="status_ready">準備就緒</string>
+    <string name="status_testing">測試進行中...</string>
+</resources>
+
