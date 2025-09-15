@@ -93,7 +93,7 @@
 ## 📥 下載安裝
 
 ### APK下載
-- [測電力_網頁-v0.1.apk](releases/測電力_網頁-v0.1.apk) - 最新版本
+- [測電力_網頁-v0.1.apk](releases/_.-v0.1.apkk) - 最新版本
 
 ### 安裝步驟
 1. 下載APK檔案到Android裝置
