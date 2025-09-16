@@ -1,4 +1,4 @@
-# PowerTesting-Web Android App v0.7
+# PowerTesting-Web Android App v0.8
 
 <div align="center">
   <img src="images/app_icon.png" alt="App Icon" width="128" height="128">
@@ -55,10 +55,11 @@
 - **Stay Time Control**: Configurable page dwell time (default: 1.0 second)
 
 ### 🔆 Brightness Calibration
-- **Dedicated Screen**: Full-screen white background for brightness measurements
-- **Maximum Brightness**: Automatically sets screen to highest brightness
-- **Clear Instructions**: Top-positioned text with center area for measurements
-- **Easy Access**: Available from Settings page with one-tap activation
+- **Dedicated calibration screen**: Full-screen white background for brightness measurements
+- **System brightness**: Uses current system brightness setting (no forced maximum)
+- **Safe exit**: Close button prevents accidental exit during measurements
+- **Clear instructions**: Top-positioned text with center area for measurements
+- **Easy access**: Available from Settings page with dedicated button
 
 ### 🎨 User Interface
 - **Clean Design**: Maximized browser display space with Material Design
@@ -102,7 +103,7 @@ Hourly Consumption: 13.9%
 ## 📥 Download & Installation
 
 ### APK Download
-- [PowerTesting-Web-v0.7-CountdownTimer-BrightnessCalibration.apk](https://github.com/ahui3c/powertesting-web-Android/releases/latest) - Latest Version
+- [PowerTesting-Web-v0.8-ImprovedBrightnessCalibration.apk](https://github.com/ahui3c/powertesting-web-Android/releases/latest) - Latest Version
 
 ### Installation Steps
 1. Download APK file to your Android device
@@ -122,8 +123,9 @@ Hourly Consumption: 13.9%
 ### Brightness Calibration
 1. **Access Settings**: Go to Settings page
 2. **Tap "Brightness Calibration"**: Opens full-screen calibration mode
-3. **Measure Brightness**: Use brightness meter on center white area
-4. **Exit**: Tap anywhere on screen to return to settings
+3. **Adjust System Brightness**: Manually adjust to desired brightness level
+4. **Measure Brightness**: Use brightness meter on center white area
+5. **Safe Exit**: Tap "Close" button at bottom to return to settings
 
 ### Configuration Options
 - **Test Duration**: 1-120 minutes adjustable (default: 60 minutes)
@@ -174,13 +176,18 @@ app/
 
 ## 📝 Version History
 
-### v0.7 (2025-09-16) - Latest
+### v0.8 (2025-09-16) - Latest
+- ✅ **Improved Brightness Calibration**: Close button for safe exit, system brightness usage
+- ✅ **Enhanced Safety**: Prevents accidental exit during measurements
+- ✅ **Better Layout**: Three-zone design with RelativeLayout structure
+- ✅ **Professional Calibration**: Optimized for actual calibration use cases
+
+### v0.7 (2025-09-16)
 - ✅ **Countdown Timer**: Shows remaining test time with auto-stop at 00:00
 - ✅ **Brightness Calibration**: Dedicated full-screen white calibration mode
 - ✅ **Updated Defaults**: 60-minute test duration, 1-second stay time
 - ✅ **Samsung Z Fold Compatibility**: Optimized for foldable devices
 - ✅ **Enhanced UI**: Material Design improvements
-- ✅ **Settings Integration**: Brightness calibration accessible from settings page
 
 ### v0.5 (2025-09-16)
 - ✅ Initial brightness calibration implementation

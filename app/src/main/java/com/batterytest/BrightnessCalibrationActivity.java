@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.TextView;
+import android.widget.Button;
 
 public class BrightnessCalibrationActivity extends Activity {
 
@@ -26,26 +26,16 @@ public class BrightnessCalibrationActivity extends Activity {
         // 保持螢幕常亮
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         
-        // 設定最高亮度
-        WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
-        layoutParams.screenBrightness = 1.0f; // 最大亮度
-        getWindow().setAttributes(layoutParams);
+        // 使用系統當前亮度，不強制設定最大亮度
+        // 移除亮度設定程式碼
         
-        // 點擊任何地方返回
-        findViewById(R.id.calibrationLayout).setOnClickListener(new View.OnClickListener() {
+        // 設定關閉按鈕點擊事件
+        Button closeButton = findViewById(R.id.btnClose);
+        closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-    }
-    
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // 恢復螢幕亮度設定
-        WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
-        layoutParams.screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE;
-        getWindow().setAttributes(layoutParams);
     }
 }

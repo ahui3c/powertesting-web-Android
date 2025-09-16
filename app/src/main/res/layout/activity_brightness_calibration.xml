@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/calibrationLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#FFFFFF">
 
     <!-- 頂部文字說明區域 -->
     <LinearLayout
+        android:id="@+id/topInstructions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="24dp"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:layout_alignParentTop="true">
 
         <TextView
             android:layout_width="wrap_content"
@@ -34,7 +35,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="• 螢幕已設定為最大亮度"
+            android:text="• 使用系統當前亮度設定"
             android:textSize="14sp"
             android:textColor="#666666"
             android:layout_marginBottom="4dp" />
@@ -55,21 +56,36 @@
             android:textColor="#666666"
             android:layout_marginBottom="16dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="點擊任何地方返回"
-            android:textSize="12sp"
-            android:textColor="#999999"
-            android:textStyle="italic" />
-
     </LinearLayout>
 
     <!-- 中央大片空白區域供亮度計測量 -->
     <View
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topInstructions"
+        android:layout_above="@id/bottomControls"
         android:background="#FFFFFF" />
 
-</LinearLayout>
+    <!-- 底部控制區域 -->
+    <LinearLayout
+        android:id="@+id/bottomControls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="24dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btnClose"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:text="關閉"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_red_background"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+</RelativeLayout>
