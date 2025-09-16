@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
     private int currentUrlIndex = 0;
     private String[] testUrls = new String[5];
     private int scrollSpeed = 6;
-    private int testDurationMinutes = 30;
-    private float stayTimeSeconds = 2.0f;
+    private int testDurationMinutes = 60;
+    private float stayTimeSeconds = 1.0f;
     
     private BroadcastReceiver batteryReceiver;
     private Vibrator vibrator;
@@ -164,10 +164,10 @@ public class MainActivity extends AppCompatActivity {
         scrollSpeed = prefs.getInt("scroll_speed", 6);
         
         // 載入測試時間設定
-        testDurationMinutes = prefs.getInt("test_duration", 30);
+        testDurationMinutes = prefs.getInt("test_duration", 60);
         
         // 載入停留時間設定
-        stayTimeSeconds = prefs.getFloat("stay_time", 2.0f);
+        stayTimeSeconds = prefs.getFloat("stay_time", 1.0f);
     }
     
     private void setupBatteryReceiver() {
@@ -471,8 +471,20 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 if (isTestRunning) {
                     long elapsed = System.currentTimeMillis() - testStartTime;
-                    long minutes = elapsed / (1000 * 60);
-                    long seconds = (elapsed % (1000 * 60)) / 1000;
+                    long totalTestTime = testDurationMinutes * 60 * 1000; // 總測試時間（毫秒）
+                    long remaining = totalTestTime - elapsed;
+                    
+                    if (remaining <= 0) {
+                        // 時間到了，自動停止測試
+                        remaining = 0;
+                        if (isTestRunning) {
+                            stopTestWithResults();
+                        }
+                        return;
+                    }
+                    
+                    long minutes = remaining / (1000 * 60);
+                    long seconds = (remaining % (1000 * 60)) / 1000;
                     
                     tvTimer.setText(String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds));
                     handler.postDelayed(this, 1000);

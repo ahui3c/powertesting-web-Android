@@ -58,6 +58,13 @@
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         
+        <activity
+            android:name=".BrightnessCalibrationActivity"
+            android:exported="false"
+            android:parentActivityName=".SettingsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        
     </application>
 
 </manifest>

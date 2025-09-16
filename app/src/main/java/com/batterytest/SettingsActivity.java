@@ -64,13 +64,13 @@ public class SettingsActivity extends AppCompatActivity {
         sbScrollSpeed.setProgress(scrollSpeed - 1);
         updateScrollSpeedText(scrollSpeed);
         
-        // 載入測試時間設定
-        int testDuration = sharedPreferences.getInt("test_duration", 30);
+        // 載入測試時間設定 (預設60分鐘)
+        int testDuration = sharedPreferences.getInt("test_duration", 60);
         sbTestDuration.setProgress(testDuration - 1);
         updateTestDurationText(testDuration);
         
-        // 載入停留時間設定 (預設2.0秒，對應progress=10)
-        float stayTime = sharedPreferences.getFloat("stay_time", 2.0f);
+        // 載入停留時間設定 (預設1.0秒，對應progress=5)
+        float stayTime = sharedPreferences.getFloat("stay_time", 1.0f);
         int progress = (int)((stayTime - 0.5f) * 10); // 0.5-4.5秒對應0-40
         sbStayTime.setProgress(progress);
         updateStayTimeText(stayTime);
@@ -156,6 +156,13 @@ public class SettingsActivity extends AppCompatActivity {
         // 作者網址點擊
         tvAuthorUrl.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://ahui3.com"));
+            startActivity(intent);
+        });
+        
+        // 校正亮度按鈕點擊
+        Button btnCalibration = findViewById(R.id.btnCalibration);
+        btnCalibration.setOnClickListener(v -> {
+            Intent intent = new Intent(this, BrightnessCalibrationActivity.class);
             startActivity(intent);
         });
     }

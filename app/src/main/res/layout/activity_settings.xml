@@ -364,6 +364,17 @@
             android:layout_marginBottom="32dp"
             android:textColor="#999999" />
 
+        <!-- 校正亮度按鈕 -->
+        <Button
+            android:id="@+id/btnCalibration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="校正亮度"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="#9C27B0"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
         <!-- 按鈕區域 -->
         <LinearLayout
             android:layout_width="match_parent"

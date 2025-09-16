@@ -1,141 +1,159 @@
-# 測電力_網頁 (PowerTesting Web) v0.5
+# PowerTesting-Web Android App v0.5
 
 <div align="center">
-  <img src="images/app_icon.png" alt="應用程式圖示" width="128" height="128">
+  <img src="images/app_icon.png" alt="App Icon" width="128" height="128">
   <br>
-  <strong>一個專為Android設計的網頁瀏覽電力測試應用程式</strong>
+  <strong>A comprehensive Android application for battery consumption testing through simulated web browsing behavior</strong>
   <br>
-  可以自動模擬用戶瀏覽網頁的行為，並精確記錄電池消耗情況
+  Automatically simulates human web browsing patterns and accurately records battery consumption
 </div>
 
-## 📱 應用程式截圖
+## 📱 App Screenshots
 
 <div align="center">
   <table>
     <tr>
       <td align="center">
-        <img src="images/screenshots/settings_overview.png" alt="設定頁面總覽" width="250">
+        <img src="images/screenshots/settings_overview.png" alt="Settings Overview" width="250">
         <br>
-        <strong>設定頁面總覽</strong>
+        <strong>Settings Overview</strong>
       </td>
       <td align="center">
-        <img src="images/screenshots/settings_page.png" alt="網址設定頁面" width="250">
+        <img src="images/screenshots/settings_page.png" alt="URL Configuration" width="250">
         <br>
-        <strong>網址設定頁面</strong>
+        <strong>URL Configuration</strong>
       </td>
       <td align="center">
-        <img src="images/screenshots/test_result.png" alt="測試結果報告" width="250">
+        <img src="images/screenshots/test_result.png" alt="Test Results" width="250">
         <br>
-        <strong>測試結果報告</strong>
+        <strong>Test Results</strong>
       </td>
     </tr>
   </table>
 </div>
 
-## 📱 功能特色
+## 🎯 Key Features
 
-### 🔋 電力測試
-- **自動化測試**: 全自動模擬人工瀏覽網頁行為
-- **精確記錄**: 記錄測試開始和結束的電量變化
-- **詳細報告**: 提供完整的測試結果和電量消耗分析
-- **可調時間**: 支援1-120分鐘的測試時間設定
+### 🔋 Battery Testing
+- **Countdown Timer**: Displays remaining test time with automatic stop at 00:00
+- **Automated Testing**: Fully automated simulation of human web browsing behavior
+- **Accurate Recording**: Tracks battery level changes from start to finish
+- **Detailed Reports**: Comprehensive test results and battery consumption analysis
+- **Adjustable Duration**: Support for 1-120 minute test sessions (default: 60 minutes)
 
-### 🌐 網頁瀏覽
-- **內嵌瀏覽器**: 使用WebView提供完整的網頁瀏覽體驗
-- **多網址循環**: 支援5組網址循環測試
-- **智能切換**: 滑動到頁面底部時自動切換到下一個網址
-- **預設網站**: 內建台灣本土網站作為預設測試對象
+### 🌐 Web Browsing
+- **Embedded Browser**: Full WebView experience with JavaScript support
+- **5-Website Rotation**: Cycles through 5 configurable test websites
+- **Smart Switching**: Automatically switches to next URL when reaching page bottom
+- **Default Websites**: Pre-configured with popular Taiwan websites
 
-### ⚡ 滑動模擬
-- **真實滑動**: 模擬真實手指滑動，非按鍵操作
-- **可調速度**: 10級滑動速度可調整
-- **平滑動畫**: 分步驟產生平滑的滑動動畫
-- **底部檢測**: 智能檢測頁面底部並觸發切換
+### ⚡ Scrolling Simulation
+- **Natural Scrolling**: Simulates real finger scrolling, not key presses
+- **Adjustable Speed**: 10-level scrolling speed configuration
+- **Smooth Animation**: Step-by-step smooth scrolling animation
+- **Bottom Detection**: Intelligent page bottom detection for URL switching
+- **Stay Time Control**: Configurable page dwell time (default: 1.0 second)
 
-### 🎨 使用者界面
-- **精簡設計**: 最大化瀏覽器顯示空間
-- **即時狀態**: 顯示當前電量、網址和測試時間
-- **防休眠**: 測試期間保持螢幕常亮
-- **120Hz支援**: 支援高更新率顯示器
+### 🔆 Brightness Calibration
+- **Dedicated Screen**: Full-screen white background for brightness measurements
+- **Maximum Brightness**: Automatically sets screen to highest brightness
+- **Clear Instructions**: Top-positioned text with center area for measurements
+- **Easy Access**: Available from Settings page with one-tap activation
 
-## 📊 測試結果
+### 🎨 User Interface
+- **Clean Design**: Maximized browser display space with Material Design
+- **Real-time Status**: Current battery level, website, and countdown timer
+- **Screen Wake Lock**: Keeps screen active during testing
+- **120Hz Support**: Optimized for high refresh rate displays
+- **Foldable Support**: Samsung Galaxy Z Fold series compatibility
 
-應用程式會產生詳細的測試報告，包含：
+## 📊 Test Results
+
+The application generates detailed test reports including:
 
 ```
-測電力_網頁 測試結果報告
+PowerTesting-Web Test Report
 
-裝置資訊:
-手機型號: Samsung Galaxy Z Fold5 (Android 14)
+Device Information:
+Model: Samsung Galaxy Z Fold5 (Android 14)
 
-測試時間:
-開始: 14:30:15
-結束: 15:00:28
-總時長: 30分13秒
+Test Duration:
+Start: 14:30:15
+End: 15:00:28
+Total: 30min 13sec
 
-電量變化:
-開始電量: 85%
-結束電量: 78%
-消耗電量: 7%
+Battery Changes:
+Start Level: 85%
+End Level: 78%
+Consumed: 7%
 
-每小時消耗: 13.9%
+Hourly Consumption: 13.9%
 ```
 
-## 🛠️ 技術規格
+## 🛠️ Technical Specifications
 
-- **最低系統**: Android 7.0 (API 24)
-- **目標系統**: Android 14 (API 34)
-- **開發語言**: Java
-- **UI框架**: Android原生 + Material Design
-- **瀏覽器**: WebView with JavaScript支援
-- **特殊功能**: 120Hz高更新率支援
+- **Minimum Android**: 7.0 (API 24)
+- **Target Android**: 14 (API 34)
+- **Programming Language**: Java with Kotlin support
+- **UI Framework**: Android Native + Material Design
+- **Browser Engine**: WebView with JavaScript support
+- **Special Features**: 120Hz high refresh rate support, Foldable device compatibility
 
-## 📥 下載安裝
+## 📥 Download & Installation
 
-### APK下載
-- [測電力_網頁-v0.1.apk](https://github.com/ahui3c/powertesting-web-Android/releases/download/v0.1/_.-v0.1.apk) - 最新版本
+### APK Download
+- [PowerTesting-Web-v0.5-BrightnessCalibration.apk](https://github.com/ahui3c/powertesting-web-Android/releases/latest) - Latest Version
 
-### 安裝步驟
-1. 下載APK檔案到Android裝置
-2. 開啟「未知來源」安裝權限
-3. 點擊APK檔案進行安裝
-4. 安裝完成後即可使用
+### Installation Steps
+1. Download APK file to your Android device
+2. Enable "Install from Unknown Sources" in Android settings
+3. Tap the APK file to install
+4. Grant necessary permissions and start using
 
-## ⚙️ 使用說明
+## ⚙️ Usage Guide
 
-### 基本操作
-1. **開啟應用程式**: 點擊桌面圖示啟動
-2. **進入設定**: 點擊右下角「設定」按鈕
-3. **調整參數**: 設定測試時間、滑動速度和網址
-4. **開始測試**: 返回主頁面點擊「執行」開始測試
-5. **查看結果**: 測試完成後查看詳細報告
+### Basic Operation
+1. **Launch App**: Tap the desktop icon to start
+2. **Access Settings**: Tap the "Settings" button in bottom right
+3. **Configure Parameters**: Set test duration, scroll speed, and URLs
+4. **Start Test**: Return to main page and tap "Start" to begin testing
+5. **View Results**: Check detailed report after test completion
 
-### 設定選項
-- **測試時間**: 1-120分鐘可調
-- **滑動速度**: 1-10級速度設定
-- **網址設定**: 5組網址循環配置
-- **預設網址**: 
+### Brightness Calibration
+1. **Access Settings**: Go to Settings page
+2. **Tap "Brightness Calibration"**: Opens full-screen calibration mode
+3. **Measure Brightness**: Use brightness meter on center white area
+4. **Exit**: Tap anywhere on screen to return to settings
+
+### Configuration Options
+- **Test Duration**: 1-120 minutes adjustable (default: 60 minutes)
+- **Scroll Speed**: 10-level speed settings (default: level 6)
+- **Stay Time**: 0.5-4.5 seconds page dwell time (default: 1.0 second)
+- **URL Configuration**: 5 website rotation setup
+- **Default URLs**: 
   - https://ahui3c.com
   - https://www.pchome.com.tw
   - https://m.mobile01.com
   - https://lpcomment.com/
   - https://www.toy-people.com/
 
-## 🔧 開發環境
+## 🔧 Development Environment
 
-### 建置需求
-- Android Studio Arctic Fox 或更新版本
+### Build Requirements
+- Android Studio Arctic Fox or later
 - Android SDK 34
-- Java 8 或更新版本
+- Java 8 or later
 - Gradle 8.0
 
-### 專案結構
+### Project Structure
 ```
 app/
 ├── src/main/
 │   ├── java/com/batterytest/
 │   │   ├── MainActivity.java
-│   │   └── SettingsActivity.java
+│   │   ├── SettingsActivity.java
+│   │   ├── BrightnessCalibrationActivity.java
+│   │   └── TestHistoryActivity.java
 │   ├── res/
 │   │   ├── layout/
 │   │   ├── values/
@@ -145,65 +163,68 @@ app/
 └── proguard-rules.pro
 ```
 
-### 建置指令
+### Build Commands
 ```bash
-# Debug版本
+# Debug version
 ./gradlew assembleDebug
 
-# Release版本
+# Release version
 ./gradlew assembleRelease
 ```
 
-## 📝 版本歷史
+## 📝 Version History
 
-### v0.1 (2024-09-08)
-- 🎉 首次發布
-- ✅ 基本電力測試功能
-- ✅ 多網址循環瀏覽
-- ✅ 自動滑動模擬
-- ✅ 詳細測試報告
-- ✅ 設定頁面
-- ✅ 120Hz高更新率支援
-- ✅ 精美應用程式圖示
+### v0.5 (2025-09-16) - Latest
+- ✅ **Countdown Timer**: Shows remaining test time with auto-stop
+- ✅ **Brightness Calibration**: Dedicated full-screen white calibration mode
+- ✅ **Updated Defaults**: 60-minute test duration, 1-second stay time
+- ✅ **Samsung Z Fold Compatibility**: Optimized for foldable devices
+- ✅ **Enhanced UI**: Material Design improvements
 
-## 🤝 貢獻指南
+### Previous Versions
+- v0.4: Multi-website rotation testing
+- v0.3: Natural scrolling simulation  
+- v0.2: Battery monitoring integration
+- v0.1: Basic web browsing test functionality
 
-歡迎提交Issue和Pull Request來改進這個專案！
+## 🤝 Contributing
 
-### 提交Issue
-- 詳細描述問題或建議
-- 提供裝置型號和Android版本
-- 如果是Bug，請提供重現步驟
+Welcome to submit Issues and Pull Requests to improve this project!
 
-### 提交Pull Request
-- Fork這個專案
-- 建立feature分支
-- 提交你的修改
-- 發起Pull Request
+### Submit Issues
+- Describe problems or suggestions in detail
+- Provide device model and Android version
+- For bugs, include reproduction steps
 
-## 📄 授權條款
+### Submit Pull Requests
+- Fork this project
+- Create a feature branch
+- Commit your changes
+- Create a Pull Request
 
-本專案採用 [MIT License](LICENSE) 開源授權。
+## 📄 License
 
-## 👨‍💻 作者
+This project is licensed under the [MIT License](LICENSE).
 
-**廖阿輝**
-- 網站: [https://ahui3c.com](https://ahui3c.com)
-- 專長: Android開發、3C評測、科技寫作
+## 👨‍💻 Author
 
-## 🙏 致謝
+**ahui3c (廖阿輝)**
+- Website: [https://ahui3c.com](https://ahui3c.com)
+- Expertise: Android Development, Tech Reviews, Technology Writing
 
-感謝所有測試用戶的回饋和建議，讓這個應用程式能夠不斷改進。
+## 🙏 Acknowledgments
 
-## 📞 支援
+Thanks to all testing users for their feedback and suggestions, making this application continuously improved.
 
-如果您在使用過程中遇到問題，請：
-1. 查看本README的使用說明
-2. 搜尋已有的Issues
-3. 提交新的Issue描述問題
-4. 訪問作者網站獲取更多資訊
+## 📞 Support
+
+If you encounter problems during use, please:
+1. Check the usage instructions in this README
+2. Search existing Issues
+3. Submit a new Issue describing the problem
+4. Visit the author's website for more information
 
 ---
 
-**注意**: 本應用程式僅供測試和研究用途，請合理使用並注意電池健康。
+**Note**: This application is for testing and research purposes only. Please use reasonably and pay attention to battery health.
 
