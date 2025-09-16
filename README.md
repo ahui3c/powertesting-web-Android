@@ -1,4 +1,4 @@
-# PowerTesting-Web Android App v0.5
+# PowerTesting-Web Android App v0.7
 
 <div align="center">
   <img src="images/app_icon.png" alt="App Icon" width="128" height="128">
@@ -102,7 +102,7 @@ Hourly Consumption: 13.9%
 ## 📥 Download & Installation
 
 ### APK Download
-- [PowerTesting-Web-v0.5-BrightnessCalibration.apk](https://github.com/ahui3c/powertesting-web-Android/releases/latest) - Latest Version
+- [PowerTesting-Web-v0.7-CountdownTimer-BrightnessCalibration.apk](https://github.com/ahui3c/powertesting-web-Android/releases/latest) - Latest Version
 
 ### Installation Steps
 1. Download APK file to your Android device
@@ -174,12 +174,17 @@ app/
 
 ## 📝 Version History
 
-### v0.5 (2025-09-16) - Latest
-- ✅ **Countdown Timer**: Shows remaining test time with auto-stop
+### v0.7 (2025-09-16) - Latest
+- ✅ **Countdown Timer**: Shows remaining test time with auto-stop at 00:00
 - ✅ **Brightness Calibration**: Dedicated full-screen white calibration mode
 - ✅ **Updated Defaults**: 60-minute test duration, 1-second stay time
 - ✅ **Samsung Z Fold Compatibility**: Optimized for foldable devices
 - ✅ **Enhanced UI**: Material Design improvements
+- ✅ **Settings Integration**: Brightness calibration accessible from settings page
+
+### v0.5 (2025-09-16)
+- ✅ Initial brightness calibration implementation
+- ✅ Basic countdown timer functionality
 
 ### Previous Versions
 - v0.4: Multi-website rotation testing
