@@ -1,4 +1,4 @@
-# 測電力_網頁 (PowerTesting Web) v0.1
+# 測電力_網頁 (PowerTesting Web) v0.5
 
 <div align="center">
   <img src="images/app_icon.png" alt="應用程式圖示" width="128" height="128">

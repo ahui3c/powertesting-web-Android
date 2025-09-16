@@ -46,6 +46,35 @@
             android:layout_marginBottom="8dp"
             android:textColor="#666666" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <Button
+                android:id="@+id/btn30Min"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:text="30分鐘"
+                android:textSize="12sp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#4CAF50"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btn60Min"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:text="60分鐘"
+                android:textSize="12sp"
+                android:backgroundTint="#FF9800"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
         <TextView
             android:id="@+id/tvTestDuration"
             android:layout_width="match_parent"
@@ -70,15 +99,14 @@
             android:textSize="12sp"
             android:layout_marginTop="-16dp"
             android:layout_marginBottom="24dp"
-            android:textColor="#999999" />
-
-        <!-- 滑動速度設定 -->
+            android:textColor="#999999" />        <!-- 滑動速度設定 -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="滑動速度設定"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:layout_marginTop="24dp"
             android:layout_marginBottom="8dp"
             android:textColor="#2196F3" />
 
@@ -91,33 +119,73 @@
             android:textColor="#666666" />
 
         <TextView
-            android:id="@+id/tvScrollSpeed"
+            android:id="@+id/tvScrollSpeedValue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="滑動速度: 3 (正常)"
+            android:text="滑動速度: 6 (正常)"
             android:textSize="16sp"
             android:layout_marginBottom="8dp"
             android:textColor="#333333" />
 
         <SeekBar
-            android:id="@+id/sbScrollSpeed"
+            android:id="@+id/seekBarScrollSpeed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:max="9"
-            android:progress="2"
-            android:layout_marginBottom="24dp" />
+            android:progress="5"
+            android:layout_marginBottom="4dp" />
 
-        <!-- 網址循環設定 -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="網址循環設定"
+            android:text="範圍: 1-10 (1=很慢, 10=很快)"
+            android:textSize="12sp"
+            android:layout_marginBottom="16dp"
+            android:textColor="#999999" />
+
+        <!-- 停留時間設定 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="停留時間設定"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:textColor="#2196F3" />
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="調整每次滑動後的停留時間"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp"
+            android:textColor="#666666" />
+
+        <TextView
+            android:id="@+id/tvStayTimeValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="停留時間: 2.0秒"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"
+            android:textColor="#333333" />
+
+        <SeekBar
+            android:id="@+id/seekBarStayTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="40"
+            android:progress="10"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="範圍: 0.5-4.5秒 (0.5=很快, 4.5=很慢)"
+            android:textSize="12sp"
+            android:layout_marginBottom="24dp"
+            android:textColor="#999999" />   <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="設定5組測試網址，程式會依序循環瀏覽"
@@ -266,6 +334,27 @@
                 android:padding="4dp" />
 
         </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="作者：廖阿輝　網頁："
+            android:textSize="14sp"
+            android:layout_marginBottom="4dp"
+            android:textColor="#666666" />
+
+        <TextView
+            android:id="@+id/tvAuthorUrl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="https://ahui3.com"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="14sp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="8dp"
+            android:layout_marginBottom="8dp" />
 
         <TextView
             android:layout_width="match_parent"
