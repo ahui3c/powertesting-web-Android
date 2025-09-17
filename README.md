@@ -103,7 +103,7 @@ Hourly Consumption: 13.9%
 ## 📥 Download & Installation
 
 ### APK Download
-- [PowerTesting-Web-v0.8-ImprovedBrightnessCalibration.apk](https://github.com/ahui3c/powertesting-web-Android/releases/latest) - Latest Version
+- [PowerTesting-Web-v0.9-FixedSettings.apk](https://github.com/ahui3c/powertesting-web-Android/releases/latest) - Latest Version
 
 ### Installation Steps
 1. Download APK file to your Android device
@@ -198,6 +198,25 @@ app/
 - v0.3: Natural scrolling simulation  
 - v0.2: Battery monitoring integration
 - v0.1: Basic web browsing test functionality
+
+## 📋 Version History
+
+### v0.9 (Latest)
+- **Fixed Settings Functions**: Quick selection buttons (30/60 min) now work properly
+- **Reset Button Implementation**: Complete reset to default values functionality
+- **Anti-Stuck Scrolling**: Smart detection and 1-minute page time limit
+- **Enhanced Error Handling**: Automatic recovery from JavaScript errors
+- **Improved Stability**: Dual scrolling mechanism (JavaScript + Touch backup)
+
+### v0.8
+- **Improved Brightness Calibration**: Close button only exit, system brightness usage
+- **Enhanced UI**: Better layout and user experience
+- **Bug Fixes**: Various stability improvements
+
+### v0.7
+- **Countdown Timer**: Display remaining time instead of elapsed time
+- **Automatic Stop**: Test stops when timer reaches 00:00
+- **Version Updates**: Enhanced compatibility and performance
 
 ## 🤝 Contributing
 

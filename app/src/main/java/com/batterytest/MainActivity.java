@@ -386,66 +386,163 @@ public class MainActivity extends AppCompatActivity {
         return "網站" + (currentUrlIndex + 1);
     }
     
+    // 添加網頁時間限制相關變數
+    private long currentPageStartTime = 0;
+    private static final long MAX_PAGE_TIME = 60 * 1000; // 每個網頁最大1分鐘
+    private int scrollAttempts = 0;
+    private int lastScrollPosition = 0;
+    private static final int MAX_SCROLL_ATTEMPTS = 10; // 最大捲動嘗試次數
+    
     private void startScrolling() {
         if (!isTestRunning) return;
+        
+        // 記錄當前網頁開始時間
+        currentPageStartTime = System.currentTimeMillis();
+        scrollAttempts = 0;
+        lastScrollPosition = 0;
         
         scrollRunnable = new Runnable() {
             @Override
             public void run() {
                 if (!isTestRunning) return;
                 
+                // 檢查網頁時間限制
+                long currentTime = System.currentTimeMillis();
+                if (currentTime - currentPageStartTime > MAX_PAGE_TIME) {
+                    // 超過1分鐘，強制切換到下一個網頁
+                    tvStatus.setText("網頁時間到，切換下一個...");
+                    switchToNextPage();
+                    return;
+                }
+                
                 performSmoothScroll();
                 
-                // 檢查是否到達底部
+                // 檢查是否到達底部或卡住
                 webView.evaluateJavascript(
-                    "(function() { return (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 200); })();",
+                    "(function() { " +
+                    "var scrollPos = window.scrollY || window.pageYOffset; " +
+                    "var isAtBottom = (window.innerHeight + scrollPos) >= (document.body.offsetHeight - 100); " +
+                    "return {scrollPos: scrollPos, isAtBottom: isAtBottom}; " +
+                    "})();",
                     result -> {
-                        if ("true".equals(result)) {
-                            // 到達底部，切換到下一個網址
-                            currentUrlIndex = (currentUrlIndex + 1) % testUrls.length;
-                            loadNextUrl();
-                        } else {
-                            // 繼續滑動，使用更長的間隔時間
-                            int interval = getScrollInterval();
-                            handler.postDelayed(this, interval);
+                        try {
+                            // 解析返回的JSON
+                            result = result.replace("\"", "");
+                            if (result.contains("scrollPos") && result.contains("isAtBottom")) {
+                                // 簡單解析
+                                boolean isAtBottom = result.contains("isAtBottom:true");
+                                String scrollPosStr = result.substring(result.indexOf("scrollPos:") + 10);
+                                scrollPosStr = scrollPosStr.substring(0, scrollPosStr.indexOf(","));
+                                int currentScrollPos = Integer.parseInt(scrollPosStr.trim());
+                                
+                                if (isAtBottom) {
+                                    // 到達底部，切換到下一個網址
+                                    tvStatus.setText("頁面完成，切換下一個...");
+                                    switchToNextPage();
+                                } else {
+                                    // 檢查是否卡住（滾動位置沒有變化）
+                                    if (Math.abs(currentScrollPos - lastScrollPosition) < 10) {
+                                        scrollAttempts++;
+                                        if (scrollAttempts >= MAX_SCROLL_ATTEMPTS) {
+                                            // 可能卡住了，強制切換
+                                            tvStatus.setText("檢測到卡住，切換下一個...");
+                                            switchToNextPage();
+                                            return;
+                                        }
+                                    } else {
+                                        scrollAttempts = 0; // 重置嘗試次數
+                                    }
+                                    
+                                    lastScrollPosition = currentScrollPos;
+                                    
+                                    // 繼續滑動
+                                    int interval = getScrollInterval();
+                                    handler.postDelayed(this, interval);
+                                }
+                            } else {
+                                // JavaScript執行失敗，使用備用方案
+                                scrollAttempts++;
+                                if (scrollAttempts >= MAX_SCROLL_ATTEMPTS) {
+                                    tvStatus.setText("JavaScript錯誤，切換下一個...");
+                                    switchToNextPage();
+                                } else {
+                                    int interval = getScrollInterval();
+                                    handler.postDelayed(this, interval);
+                                }
+                            }
+                        } catch (Exception e) {
+                            // 解析錯誤，使用備用方案
+                            scrollAttempts++;
+                            if (scrollAttempts >= MAX_SCROLL_ATTEMPTS) {
+                                tvStatus.setText("解析錯誤，切換下一個...");
+                                switchToNextPage();
+                            } else {
+                                int interval = getScrollInterval();
+                                handler.postDelayed(this, interval);
+                            }
                         }
                     }
                 );
             }
         };
         
-        // 初始延遲更長，讓用戶有時間看到頁面內容
-        handler.postDelayed(scrollRunnable, 2000);
+        // 初始延遲，讓頁面有時間載入
+        handler.postDelayed(scrollRunnable, 3000);
+    }
+    
+    private void switchToNextPage() {
+        currentUrlIndex = (currentUrlIndex + 1) % testUrls.length;
+        loadNextUrl();
     }
     
     private void performSmoothScroll() {
-        // 根據速度調整滑動距離，避免內容卡住
-        float scrollRatio = 0.2f + (scrollSpeed * 0.03f); // 基礎20% + 速度調整
+        // 使用更穩定的捲動方式，避免卡住
         
-        float startY = webView.getHeight() * 0.7f; // 從螢幕70%位置開始
-        float endY = webView.getHeight() * (0.7f - scrollRatio); // 根據速度調整結束位置
+        // 方法1: 使用JavaScript捲動（更穩定）
+        int scrollDistance = 200 + (scrollSpeed * 50); // 根據速度調整捲動距離
         
-        // 確保滑動距離不會太小或太大
-        if (endY > webView.getHeight() * 0.3f) {
-            endY = webView.getHeight() * 0.3f; // 最小滑動到30%位置
-        }
-        if (endY < webView.getHeight() * 0.1f) {
-            endY = webView.getHeight() * 0.1f; // 最大滑動到10%位置
-        }
+        webView.evaluateJavascript(
+            "(function() { " +
+            "window.scrollBy({" +
+            "  top: " + scrollDistance + "," +
+            "  left: 0," +
+            "  behavior: 'smooth'" +
+            "}); " +
+            "})();", 
+            null
+        );
         
-        // 使用更流暢的滑動動畫：增加步數，減少每步時間間隔
-        final int totalSteps = 20; // 增加到20步，更流暢
-        final int stepDelay = 16; // 16ms間隔，接近60fps
+        // 方法2: 備用觸控捲動（如果JavaScript失敗）
+        handler.postDelayed(() -> {
+            performTouchScroll();
+        }, 100);
+    }
+    
+    private void performTouchScroll() {
+        // 備用的觸控捲動方法
+        float scrollRatio = 0.15f + (scrollSpeed * 0.02f); // 較小的基礎比例
+        
+        float startY = webView.getHeight() * 0.6f; // 從螢幕60%位置開始
+        float endY = webView.getHeight() * (0.6f - scrollRatio); // 根據速度調整結束位置
+        
+        // 確保滑動距離合理
+        float minEndY = webView.getHeight() * 0.2f;
+        float maxEndY = webView.getHeight() * 0.5f;
+        endY = Math.max(minEndY, Math.min(maxEndY, endY));
+        
+        // 使用較少的步數，避免過度複雜
+        final int totalSteps = 12; // 減少步數
+        final int stepDelay = 20; // 稍微增加間隔
         
         for (int i = 0; i < totalSteps; i++) {
             final int step = i;
             final float finalEndY = endY;
             handler.postDelayed(() -> {
-                // 使用緩動函數讓滑動更自然
+                if (!isTestRunning) return; // 確保測試還在進行
+                
+                // 使用線性插值，更簡單穩定
                 float progress = (float) step / (totalSteps - 1);
-                // 使用ease-out緩動，開始快，結束慢
-                float easedProgress = 1 - (1 - progress) * (1 - progress);
-                float currentY = startY + (finalEndY - startY) * easedProgress;
+                float currentY = startY + (finalEndY - startY) * progress;
                 
                 long downTime = System.currentTimeMillis();
                 int action = (step == 0) ? MotionEvent.ACTION_DOWN : 
@@ -456,7 +553,7 @@ public class MainActivity extends AppCompatActivity {
                 
                 webView.dispatchTouchEvent(event);
                 event.recycle();
-            }, step * stepDelay); // 使用16ms間隔，總共320ms完成一次滑動
+            }, step * stepDelay);
         }
     }
     

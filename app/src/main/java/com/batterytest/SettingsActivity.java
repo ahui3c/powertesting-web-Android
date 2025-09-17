@@ -15,7 +15,7 @@ public class SettingsActivity extends AppCompatActivity {
     private EditText etUrl1, etUrl2, etUrl3, etUrl4, etUrl5;
     private SeekBar sbScrollSpeed, sbTestDuration, sbStayTime;
     private TextView tvScrollSpeed, tvTestDuration, tvStayTime, tvAuthorUrl;
-    private Button btn30Min, btn60Min;
+    private Button btn30Min, btn60Min, btnReset, btnSave;
     private SharedPreferences sharedPreferences;
     
     @Override
@@ -46,9 +46,13 @@ public class SettingsActivity extends AppCompatActivity {
         tvStayTime = findViewById(R.id.tvStayTimeValue);
         tvAuthorUrl = findViewById(R.id.tvAuthorUrl);
         
-        // 快速選擇按鈕暫時註解，因為佈局檔案中沒有這些ID
-        // btn30Min = findViewById(R.id.btnQuick30);
-        // btn60Min = findViewById(R.id.btnQuick60);
+        // 快速選擇按鈕
+        btn30Min = findViewById(R.id.btn30Min);
+        btn60Min = findViewById(R.id.btn60Min);
+        
+        // 重設和儲存按鈕
+        btnReset = findViewById(R.id.btnReset);
+        btnSave = findViewById(R.id.btnSave);
     }
     
     private void loadSettings() {
@@ -77,20 +81,27 @@ public class SettingsActivity extends AppCompatActivity {
     }
     
     private void setupListeners() {
-        // 快速選擇按鈕暫時註解
-        /*
+        // 快速選擇按鈕
         btn30Min.setOnClickListener(v -> {
-            sbTestDuration.setProgress(29); // 30分鐘
+            sbTestDuration.setProgress(29); // 30分鐘 (progress = 29, 因為progress+1=30)
             updateTestDurationText(30);
             saveSettings();
         });
         
         btn60Min.setOnClickListener(v -> {
-            sbTestDuration.setProgress(59); // 60分鐘
+            sbTestDuration.setProgress(59); // 60分鐘 (progress = 59, 因為progress+1=60)
             updateTestDurationText(60);
             saveSettings();
         });
-        */
+        
+        // 重設按鈕
+        btnReset.setOnClickListener(v -> resetToDefaults());
+        
+        // 儲存按鈕
+        btnSave.setOnClickListener(v -> {
+            saveSettings();
+            finish(); // 儲存後返回主頁面
+        });
         
         // 滑動速度設定
         sbScrollSpeed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -219,5 +230,34 @@ public class SettingsActivity extends AppCompatActivity {
     
     private void updateStayTimeText(float stayTime) {
         tvStayTime.setText(String.format("停留時間: %.1f秒", stayTime));
+    }
+    
+    private void resetToDefaults() {
+        // 重設所有設定為預設值
+        
+        // 重設網址為預設值
+        etUrl1.setText("https://ahui3c.com");
+        etUrl2.setText("https://www.pchome.com.tw");
+        etUrl3.setText("https://m.mobile01.com");
+        etUrl4.setText("https://lpcomment.com/");
+        etUrl5.setText("https://www.toy-people.com/");
+        
+        // 重設滑動速度為6 (progress = 5)
+        sbScrollSpeed.setProgress(5);
+        updateScrollSpeedText(6);
+        
+        // 重設測試時間為60分鐘 (progress = 59)
+        sbTestDuration.setProgress(59);
+        updateTestDurationText(60);
+        
+        // 重設停留時間為1.0秒 (progress = 5)
+        sbStayTime.setProgress(5);
+        updateStayTimeText(1.0f);
+        
+        // 儲存重設後的設定
+        saveSettings();
+        
+        // 顯示提示訊息
+        android.widget.Toast.makeText(this, "已重設為預設值", android.widget.Toast.LENGTH_SHORT).show();
     }
 }
